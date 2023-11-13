@@ -1,0 +1,33 @@
+# Dada Y[t+1]=aY[t]+c
+# Definir coeficientes
+t=100 #períodos
+
+alpha=5
+beta=0.5
+delta=5
+theta=0.5
+sigma=1.5
+  
+a=1-sigma*(beta+theta)
+b=sigma*(alpha+delta)
+# Inicializar el vector de salida y
+y <- numeric(t)
+
+# Resolver la ecuación en diferencia
+y[1] <- 5  # Condición inicial
+for (n in 1:(t - 1)) {
+  y[n + 1] <- a * y[n] + b 
+}
+
+# Mostrar resultados
+cat("Valores de y:\n")
+cat(y, "\n")
+
+# Graficar los resultados
+plot(y, type = "b", pch = 16, col = "blue", xlab = "Paso de tiempo", ylab = "Valor de y", main = "Solución de Ecuación en Diferencia Lineal")
+
+# Agregar líneas para destacar la entrada x
+lines(b, type = "o", pch = 16, col = "red")
+
+# Agregar leyendas
+legend("topright", legend = c("y", "equilibrio"), col = c("blue", "red"), pch = c(16, 16))
